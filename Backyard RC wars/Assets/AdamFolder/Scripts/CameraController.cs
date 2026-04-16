@@ -7,11 +7,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] GameObject _target1;
 
     [Header("Settings")]
-    [SerializeField] float _easingSpeed = 5f;
-    [SerializeField] float _baseFOV = 60f;
+    [SerializeField] float _easingSpeed = 10f;
+    [SerializeField] float _baseFOV = 20f;
     [SerializeField] float _fovPerUnit = 2f;
-    [SerializeField] float _minFOV = 40f;
-    [SerializeField] float _maxFOV = 100f;
+    [SerializeField] float _minFOV = 20f;
+    [SerializeField] float _maxFOV = 120f;
 
     Camera _camera;
 
