@@ -11,7 +11,7 @@ public class SceneController : MonoBehaviour
 
     public void LoadGameScene()
     {
-        //Name of scene with the game
+        SceneManager.LoadScene("GameScene");
     }
 
     public void QuitGame()
