@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     public int tankHealth;
-    int currentHealth;
+    public int currentHealth;
 
     private void Awake()
     {
@@ -13,7 +13,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        Death();
+       // Death();
     }
 
     public void TakeDamage(int damage)
@@ -25,7 +25,7 @@ public class Health : MonoBehaviour
     {
         if(currentHealth <= 0)
         {
-            SceneManager.LoadScene("WinScene");
+           // SceneManager.LoadScene("WinScene");
         }
     }
 }
