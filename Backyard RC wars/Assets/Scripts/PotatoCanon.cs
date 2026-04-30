@@ -13,7 +13,6 @@ public class PotatoCanon : MonoBehaviour
     [SerializeField] int potatoDamage;
     [SerializeField] GameObject originPos;
     [SerializeField] GameObject bulletPrefab;
-    [SerializeField] Transform playerRotation;
     [SerializeField] float howLongShouldWait;
 
     private void Awake()
@@ -24,6 +23,10 @@ public class PotatoCanon : MonoBehaviour
 
     private void Update()
     {
+        OnAttack();
+        Debug.Log(potatoFired);
+        Debug.Log(timeBetweenShots);
+
         if(potatoFired == true)
         {
             timeBetweenShots += Time.deltaTime;
@@ -32,6 +35,7 @@ public class PotatoCanon : MonoBehaviour
         if(timeBetweenShots >= howLongShouldWait)
         {
             potatoFired = false;
+            timeBetweenShots = 0f;
         }
     }
 
@@ -40,8 +44,10 @@ public class PotatoCanon : MonoBehaviour
     {
         if (playerInput.actions["Attack"].IsPressed() && potatoFired == false)
         {
-            var instace = Instantiate(bulletPrefab, originPos.transform.position, playerRotation.rotation);
-            instace.GetComponent<Rigidbody>().AddForce(Vector3.forward * potatoRange, ForceMode.Impulse);
+            var instance = Instantiate(bulletPrefab, originPos.transform.position, originPos.transform.rotation);
+            instance.GetComponent<Rigidbody>().linearVelocity = originPos.transform.forward * potatoRange;
+         
+
             potatoFired = true;
         }
     }
