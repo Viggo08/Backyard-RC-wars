@@ -1,19 +1,13 @@
 using UnityEngine;
 
 public class PotatoBullet : MonoBehaviour
-{
-    Health healthScript;
+{ 
     float timer = 0;
 
 
     [SerializeField] int damage;
     [SerializeField] float explodeTimer;
 
-    private void Awake()
-    {
-        healthScript = FindAnyObjectByType<Health>();
-        
-    }
 
     private void Update()
     {
@@ -33,6 +27,7 @@ public class PotatoBullet : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player"))
         {
+            Health healthScript = collision.collider.GetComponent<Health>();
             healthScript.TakeDamage(damage);
         }
 
