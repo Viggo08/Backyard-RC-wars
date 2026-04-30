@@ -46,4 +46,9 @@ public class CameraController : MonoBehaviour
 
         _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, targetFOV, Time.deltaTime * _easingSpeed);
     }
+
+    public void ScreenShake(int shakeForce)
+    {
+
+    }
 }
