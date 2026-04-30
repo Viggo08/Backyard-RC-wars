@@ -25,6 +25,7 @@ public class BulletScript : MonoBehaviour
         if (Other.CompareTag("Player"))
         {
             SGS.Hits += 1;
+            Destroy(gameObject);
 
         }
         if (Stun == true && Other.CompareTag("Player"))
@@ -38,5 +39,6 @@ public class BulletScript : MonoBehaviour
         otherRB.isKinematic = true;
         yield return new WaitForSecondsRealtime(2f);
         otherRB.isKinematic = false;
+        Destroy(gameObject);
     }
 }

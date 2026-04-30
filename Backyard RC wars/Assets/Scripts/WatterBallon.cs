@@ -24,7 +24,7 @@ public class WatterBallon : MonoBehaviour
 
     private void Awake()
     {
-        input = GetComponent<PlayerInput>();
+        input = GetComponentInParent<PlayerInput>();
     }
     private void Update()
     {
@@ -44,7 +44,7 @@ public class WatterBallon : MonoBehaviour
 
 
         }
-        else if (input.actions["Attack"].triggered && areaMarkerInstance == null)
+        else if (input.actions["Attack1"].triggered && areaMarkerInstance == null)
         {
             MarkArea();
         }
