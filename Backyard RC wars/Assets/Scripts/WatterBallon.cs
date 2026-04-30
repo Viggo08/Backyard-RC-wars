@@ -29,7 +29,7 @@ public class WatterBallon : MonoBehaviour
     private void Update()
     {
 
-        if (input.actions["Attack"].triggered && areaMarkerInstance != null && ball == null)
+        if (input.actions["Attack1"].triggered && areaMarkerInstance != null && ball == null)
         {
             AMS = areaMarkerInstance.GetComponent<AreaMarkerScript>();
             Rigidbody rb = areaMarkerInstance.GetComponent<Rigidbody>();
