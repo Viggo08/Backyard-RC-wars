@@ -3,7 +3,7 @@ using UnityEngine;
 public class BoomBarrel : MonoBehaviour
 {
     [SerializeField] int _explosionPower = 10;
-    [SerializeField] int _screenShakeForce = 10;
+    [SerializeField] int _screenShakeIntensity = 10;
     [SerializeField] ParticleSystem _boomParticle; //Only need one particle on the scene
 
     void ExplosionLogic(GameObject other)
@@ -17,7 +17,7 @@ public class BoomBarrel : MonoBehaviour
             _boomParticle.Play();
         }
 
-        Camera.main.GetComponent<CameraController>().ScreenShake(_screenShakeForce);
+        Camera.main.GetComponent<CameraController>().ScreenShake(_screenShakeIntensity);
         otherRB.AddForce(-direction * _explosionPower, ForceMode.Impulse);
 
         Destroy(gameObject);

@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomBarrel
   _explosionPower: 10
+  _screenShakeIntensity: 1
   _boomParticle: {fileID: 0}

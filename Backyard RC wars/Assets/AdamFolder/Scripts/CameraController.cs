@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class CameraController : MonoBehaviour
 {
@@ -13,7 +14,11 @@ public class CameraController : MonoBehaviour
     [SerializeField] float _minFOV = 20f;
     [SerializeField] float _maxFOV = 120f;
 
+    [Header("Screen Shake")]
+    [SerializeField] float _shakeBaseDuration = 0.3f;
+
     Camera _camera;
+    Vector3 _shakeOffset;
 
     void Awake()
     {
@@ -36,7 +41,7 @@ public class CameraController : MonoBehaviour
         Vector3 midpoint = (_target0.transform.position + _target1.transform.position) / 2f;
         Vector3 targetPosition = new Vector3(midpoint.x, transform.position.y, midpoint.z);
 
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _easingSpeed);
+        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * _easingSpeed) + _shakeOffset;
     }
 
     void AdjustFOV()
@@ -47,8 +52,32 @@ public class CameraController : MonoBehaviour
         _camera.fieldOfView = Mathf.Lerp(_camera.fieldOfView, targetFOV, Time.deltaTime * _easingSpeed);
     }
 
-    public void ScreenShake(int shakeForce)
+    public void ScreenShake(int intensity)
     {
+        StopAllCoroutines();
+        StartCoroutine(ShakeRoutine(intensity));
+    }
 
+    IEnumerator ShakeRoutine(int intensity)
+    {
+        float duration = _shakeBaseDuration * intensity;
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float progress = elapsed / duration;
+            float currentIntensity = Mathf.Lerp(intensity, 0f, progress);
+
+            _shakeOffset = new Vector3(
+                Random.Range(-currentIntensity, currentIntensity),
+                Random.Range(-currentIntensity, currentIntensity),
+                0f
+            );
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        _shakeOffset = Vector3.zero;
     }
 }
