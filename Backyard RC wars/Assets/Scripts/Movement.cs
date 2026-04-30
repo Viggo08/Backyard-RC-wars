@@ -44,6 +44,7 @@ public class Movement : MonoBehaviour
     {
         float rotate = rotationAmt.x;
         rb.MoveRotation(rb.rotation * Quaternion.Euler(0f, rotate * rotationSpeed * Time.fixedDeltaTime, 0f));
+        Debug.DrawRay(transform.position, transform.forward * 5, Color.red);
     }
 
     void Update()
