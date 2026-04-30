@@ -6,13 +6,9 @@ public class Explosion : MonoBehaviour
 {
     [SerializeField] int explosionDamage;
     private float timer;
-    private Health healthScript;
     public bool destroyThisObejct;
 
-    private void Awake()
-    {
-        healthScript = GameObject.FindGameObjectWithTag("Player").GetComponent<Health>();
-    }
+
 
     private void Update()
     {
@@ -27,6 +23,8 @@ public class Explosion : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Health healthScript = other.GetComponent<Health>();
+
             healthScript.TakeDamage(explosionDamage);
         }
     }

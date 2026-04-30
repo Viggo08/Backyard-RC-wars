@@ -154,4 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotatoBullet
   damage: 1
-  explodeTimer: 2
+  explodeTimer: 1.25
