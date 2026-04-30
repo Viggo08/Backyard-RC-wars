@@ -16,7 +16,6 @@ public class BulletScript : MonoBehaviour
     {
         SGS = FindFirstObjectByType<StapleGunScript>();
         bulletRB = GetComponent<Rigidbody>();
-        StartCoroutine(StunTime());
         bulletRB.AddForce(transform.forward * bulletSpeed);
     }
 
@@ -28,15 +27,16 @@ public class BulletScript : MonoBehaviour
             SGS.Hits += 1;
 
         }
-        if (Stun == true)
+        if (Stun == true && Other.CompareTag("Player"))
         {
+            StartCoroutine(StunTime());
         }
     }
 
     IEnumerator StunTime()
     {
         otherRB.isKinematic = true;
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(2f);
         otherRB.isKinematic = false;
     }
 }
