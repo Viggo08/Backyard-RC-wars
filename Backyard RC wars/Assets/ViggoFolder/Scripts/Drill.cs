@@ -3,33 +3,26 @@ using UnityEngine;
 public class Drill : MonoBehaviour
 {
     [SerializeField] float DamageTimer = 1f;
-    [SerializeField] int Damage;
+    [SerializeField] int DrillDamage;
 
-    public int tankHealth;
-    int currentHealth;
-
-    Health health;
+    [SerializeField] Health health;
 
     private void Awake()
     {
-        health = GetComponent<Health>();
-        currentHealth = tankHealth;
+        health = FindAnyObjectByType<Health>();
     }
 
-    public void TakeDamage(int Damage)
+    public void DoDamage()
     {
-        currentHealth -= Damage;
+        health.TakeDamage(DrillDamage);
+        Debug.Log("Do damage");
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         //How often damage is dealt:
         InvokeRepeating(nameof(DoDamage), 0f, DamageTimer);
-    }
-
-    void DoDamage()
-    {
-        Debug.Log("Do damage");
+        Debug.Log(health.currentHealth);
     }
 
 }

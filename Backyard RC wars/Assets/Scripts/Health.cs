@@ -4,7 +4,7 @@ using UnityEngine.SceneManagement;
 public class Health : MonoBehaviour
 {
     public int tankHealth;
-    int currentHealth;
+    public int currentHealth;
 
     private void Awake()
     {
