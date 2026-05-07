@@ -20,7 +20,7 @@ public class BoomBarrel : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, _radius);
         foreach (var hitCollider in hitColliders)
         {
-            if (hitCollider.CompareTag("Player"))
+            if (hitCollider.CompareTag("Player")) //Rigidbodies to knockback
             {
                 Rigidbody hitRB = hitCollider.GetComponent<Rigidbody>();
                 Vector3 direction = transform.position - hitCollider.transform.position;
@@ -34,11 +34,12 @@ public class BoomBarrel : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player")) ExplosionLogic();
+        if (other.CompareTag("Player") || other.CompareTag("Bullet")) ExplosionLogic(); //Tags to explode barrel
     }
-
+    
     void OnDrawGizmosSelected()
     {
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(gameObject.transform.position, _radius);
     }
 }
