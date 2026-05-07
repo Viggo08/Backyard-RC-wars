@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7bcbd71149e6b9c4db9e5e189f2bdec7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoomBarrel
-  _explosionPower: 10
+  _power: 6
+  _radius: 4
   _screenShakeIntensity: 1
   _boomParticle: {fileID: 0}
