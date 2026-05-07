@@ -33,13 +33,11 @@ public class Health : MonoBehaviour
     {
         if(currentHealth <= 0 && playerNummber == 1)
         {
-
-
-           // SceneManager.LoadScene("WinScene1");
+            SceneManager.LoadScene("WinSceneBlue");
         }
         if (currentHealth <= 0 && playerNummber == 2)
         {
-            // SceneManager.LoadScene("WinScene2");
+             SceneManager.LoadScene("WinSceneRed");
         }
     }
 }
