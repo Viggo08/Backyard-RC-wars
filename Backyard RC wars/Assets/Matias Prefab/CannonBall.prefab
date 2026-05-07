@@ -154,9 +154,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotatoBullet
   damage: 1
-<<<<<<< Updated upstream
-  explodeTimer: 2
-=======
   explodeTimer: 1.25
-  explosionCollider: {fileID: 893567773749892755, guid: e37bfd21b5cd7694fa5d39a6e65cb555, type: 3}
->>>>>>> Stashed changes

@@ -42,7 +42,7 @@ public class PotatoCanon : MonoBehaviour
 
     void OnAttack()
     {
-        if (playerInput.actions["Attack"].IsPressed() && potatoFired == false)
+        if (playerInput.actions["Attack3"].IsPressed() && potatoFired == false)
         {
             var instance = Instantiate(bulletPrefab, originPos.transform.position, originPos.transform.rotation);
             instance.GetComponent<Rigidbody>().linearVelocity = originPos.transform.forward * potatoRange;
