@@ -24,8 +24,7 @@ public class PotatoCanon : MonoBehaviour
     private void Update()
     {
         OnAttack();
-        Debug.Log(potatoFired);
-        Debug.Log(timeBetweenShots);
+        
 
         if(potatoFired == true)
         {

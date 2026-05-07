@@ -26,6 +26,7 @@ public class PotatoBullet : MonoBehaviour
         {
             Health healthScript = collision.collider.GetComponent<Health>();
             healthScript.TakeDamage(damage);
+            Debug.Log("PotatoDamageHit");
         }
 
 
