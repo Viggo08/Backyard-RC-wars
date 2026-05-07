@@ -16,9 +16,6 @@ public class PotatoBullet : MonoBehaviour
         {
             var instance = Instantiate(explosionCollider, transform.position, transform.rotation);
 
-            Explosion explosion = instance.GetComponent<Explosion>();
-            explosion.destroyThisObejct = true;
-
             Destroy(this.gameObject);
         }
     }
@@ -32,7 +29,7 @@ public class PotatoBullet : MonoBehaviour
         }
 
 
-        var instance = Instantiate(GameObject.FindGameObjectWithTag("ExplosionCollider"), transform.position, transform.rotation);
+        var instance = Instantiate(explosionCollider, transform.position, transform.rotation);
        
 
         Destroy(this.gameObject);
