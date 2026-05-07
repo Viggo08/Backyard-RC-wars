@@ -7,14 +7,14 @@ public class PotatoBullet : MonoBehaviour
 
     [SerializeField] int damage;
     [SerializeField] float explodeTimer;
-
+    [SerializeField] GameObject explosionCollider;
 
     private void Update()
     {
         timer += Time.deltaTime;
         if(timer > explodeTimer)
         {
-            var instance = Instantiate(GameObject.FindGameObjectWithTag("ExplosionCollider"), transform.position, transform.rotation);
+            var instance = Instantiate(explosionCollider, transform.position, transform.rotation);
 
             Explosion explosion = instance.GetComponent<Explosion>();
             explosion.destroyThisObejct = true;
