@@ -8,19 +8,23 @@ public class PotatoBullet : MonoBehaviour
 
     [SerializeField] int damage;
     [SerializeField] float explodeTimer;
+<<<<<<< Updated upstream
 
     private void Awake()
     {
         healthScript = FindAnyObjectByType<Health>();
         
     }
+=======
+    [SerializeField] GameObject explosionCollider;
+>>>>>>> Stashed changes
 
     private void Update()
     {
         timer += Time.deltaTime;
         if(timer > explodeTimer)
         {
-            var instance = Instantiate(GameObject.FindGameObjectWithTag("ExplosionCollider"), transform.position, transform.rotation);
+            var instance = Instantiate(explosionCollider, transform.position, transform.rotation);
 
             Explosion explosion = instance.GetComponent<Explosion>();
             explosion.destroyThisObejct = true;
