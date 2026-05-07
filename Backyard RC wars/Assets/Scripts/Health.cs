@@ -5,10 +5,18 @@ public class Health : MonoBehaviour
 {
     public int tankHealth;
     public int currentHealth;
-
+    int playerNummber;
     private void Awake()
     {
         currentHealth = tankHealth;
+        if(GameObject.FindGameObjectWithTag("Player")  == null)
+        {
+            playerNummber = 1;
+        }
+        else
+        {
+            playerNummber = 2;
+        }
     }
 
     private void Update()
@@ -23,9 +31,13 @@ public class Health : MonoBehaviour
 
     void Death()
     {
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && playerNummber == 1)
         {
-           // SceneManager.LoadScene("WinScene");
+            SceneManager.LoadScene("WinSceneBlue");
+        }
+        if (currentHealth <= 0 && playerNummber == 2)
+        {
+             SceneManager.LoadScene("WinSceneRed");
         }
     }
 }
