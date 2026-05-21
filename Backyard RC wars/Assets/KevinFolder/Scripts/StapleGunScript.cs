@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.InputSystem;
 
 public class StapleGunScript : MonoBehaviour
 {
@@ -9,11 +10,18 @@ public class StapleGunScript : MonoBehaviour
     public int Hits;
 
     BulletScript  bulletScript;
+    PlayerInput playerInput;
 
     private Transform shootPointTransform;
     [SerializeField] float shootDelayTime = 0.3f;
     [SerializeField] bool shootDelay;
     GameObject bullet;
+
+
+    private void Awake()
+    {
+        playerInput = GetComponentInParent<PlayerInput>();
+    }
 
     private void Start()
     {
@@ -25,7 +33,7 @@ public class StapleGunScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && shootDelay == false)
+        if (playerInput.actions["Attack2"].IsPressed() && shootDelay == false)
         {
             Shoot();
             StartCoroutine(ShootCoroutine());
