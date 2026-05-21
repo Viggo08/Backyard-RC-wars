@@ -6,11 +6,13 @@ public class AreaMarkerScript : MonoBehaviour
     [SerializeField] public float growthSpeed;
     //decides max range
     [SerializeField] float survivalTime;
-    [SerializeField] float Dmg;
+    [SerializeField] int Dmg;
     Vector3 dir;
+    GameObject Target;
 
     Rigidbody rb;
     WatterBallon WB;
+    Health hpscript;
 
     private void Awake()
     {
@@ -37,10 +39,38 @@ public class AreaMarkerScript : MonoBehaviour
         //WB.areaMarkerInstance = null;
     }
 
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<Health>() != null)
+        {
+            Target = other.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.GetComponent<Health>() != null)
+        {
+            Target = null;
+        }
+    }
     private void OnDestroy()
     {
-        //Put dmg dealer hear latter
+        if (Target != null)
+        {
+            hpscript = Target.GetComponent<Health>();
+
+            if (hpscript != null)
+            {
+                hpscript.TakeDamage(Dmg);
+            }
+        }
+
     }
+
+
+
 
 
 
