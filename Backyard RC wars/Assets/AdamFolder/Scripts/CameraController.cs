@@ -31,7 +31,6 @@ public class CameraController : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(Targets.Count);
         if (Targets.Count < 2) return;
 
         FollowMidpoint();
