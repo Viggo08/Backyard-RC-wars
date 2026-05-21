@@ -68,3 +68,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Explosion
   explosionDamage: 5
   destroyThisObejct: 1
+  explosionParticle: {fileID: 2256622780435555366, guid: 0da79d342a93fe549ba399294046672e, type: 3}
