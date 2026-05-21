@@ -287,6 +287,17 @@
                 },
                 {
                     "name": "",
+                    "id": "9b70a7fc-fef1-4991-a83b-767a9ce9a987",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack1",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "6ec560b7-21be-4d6a-b037-0dedcb57d5f5",
                     "path": "<Keyboard>/space",
                     "interactions": "",
@@ -298,11 +309,33 @@
                 },
                 {
                     "name": "",
+                    "id": "b021d8fc-94c1-4c2d-9b44-613b6cdab8d1",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "Attack2",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "fd064ce7-b876-4b5f-8062-0550c99d0990",
                     "path": "<Keyboard>/backspace",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard&Mouse",
+                    "action": "Attack3",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "2143dedd-1b37-4e4d-874d-ab8cb9c43cf2",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
                     "action": "Attack3",
                     "isComposite": false,
                     "isPartOfComposite": false

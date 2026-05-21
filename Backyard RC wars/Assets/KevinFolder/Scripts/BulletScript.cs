@@ -3,42 +3,58 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour
 {
-    [SerializeField] float bulletSpeed = 10;
+    [SerializeField] float bulletSpeed = 10f;
     public Rigidbody bulletRB;
-
     public bool Stun = false;
 
-    Rigidbody otherRB;
+    private Rigidbody targetRB;
+    private StapleGunScript SGS;
+    private bool ColliderDelay;
 
-    StapleGunScript SGS;
-
+    private void Awake()
+    {
+        ColliderDelay = false;
+    }
     private void Start()
     {
         SGS = FindFirstObjectByType<StapleGunScript>();
         bulletRB = GetComponent<Rigidbody>();
-        bulletRB.AddForce(transform.forward * bulletSpeed);
+
+        bulletRB.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
     }
 
-    private void OnTriggerEnter(Collider Other)
+    private void OnTriggerEnter(Collider other)
     {
-        Rigidbody otherRB = Other.gameObject.GetComponent<Rigidbody>();
-        if (Other.CompareTag("Player"))
+        StartCoroutine(FreezeCollider());
+        if (other.CompareTag("Player"))
         {
-            SGS.Hits += 1;
-            Destroy(gameObject);
+            targetRB = other.GetComponent<Rigidbody>();
 
-        }
-        if (Stun == true && Other.CompareTag("Player"))
-        {
-            StartCoroutine(StunTime());
+            if (SGS != null) SGS.Hits += 1;
+
+            if (Stun && targetRB != null)
+            {
+                StartCoroutine(StunTime());
+            }
         }
     }
 
     IEnumerator StunTime()
     {
-        otherRB.isKinematic = true;
+        targetRB.isKinematic = true;
+        //targetRB.linearVelocity = Vector3.zero;
+        Stun = false;
         yield return new WaitForSecondsRealtime(2f);
-        otherRB.isKinematic = false;
+
+        targetRB.isKinematic = false;
+
         Destroy(gameObject);
+    }
+
+    IEnumerator FreezeCollider()
+    {
+        ColliderDelay = true;
+        yield return new WaitForSecondsRealtime(0.5f);
+        ColliderDelay = false;
     }
 }

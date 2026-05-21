@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/WinScene.unity
+    path: Assets/Scenes/WinSceneRed.unity
     guid: c2ba29485f18a364b970652145b65ee7
   - enabled: 1
     path: Assets/Scenes/ViggoScene.unity
@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 6c22d0b7692c1654fb717a4cf78a0c61
+  - enabled: 1
+    path: Assets/Scenes/WinSceneBlue.unity
+    guid: 639179775f11ace4d8e930d697f67920
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

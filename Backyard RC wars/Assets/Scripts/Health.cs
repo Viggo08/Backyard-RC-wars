@@ -21,7 +21,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-       // Death();
+       Death();
     }
 
     public void TakeDamage(int damage)

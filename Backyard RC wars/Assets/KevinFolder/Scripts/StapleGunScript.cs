@@ -15,10 +15,17 @@ public class StapleGunScript : MonoBehaviour
     private Transform shootPointTransform;
     [SerializeField] float shootDelayTime = 0.3f;
     [SerializeField] bool shootDelay;
+    GameObject bullet;
+
+
+    private void Awake()
+    {
+        playerInput = GetComponentInParent<PlayerInput>();
+    }
 
     private void Start()
     {
-        playerInput = GetComponentInParent<PlayerInput>();
+
 
         shootPointTransform = transform.Find("ShootPoint");
         shootDelay = false;
@@ -48,14 +55,15 @@ private void Shoot()
     {
         if(Hits >= HitsNeeded)
         {
-            Instantiate(Bullet, shootPointTransform.position, shootPointTransform.rotation, this.transform);
-            bulletScript = GetComponent<BulletScript>();
+            bullet = Instantiate(Bullet, shootPointTransform.position, shootPointTransform.rotation, this.transform);
+            bulletScript = bullet.GetComponent<BulletScript>();
             bulletScript.Stun = true;
+            Hits = 0;
         }
         else
         {
-            Instantiate(Bullet, shootPointTransform.position, shootPointTransform.rotation, this.transform);
-            bulletScript = GetComponent<BulletScript>();
+            bullet = Instantiate(Bullet, shootPointTransform.position, shootPointTransform.rotation, this.transform);
+            bulletScript = bullet.GetComponent<BulletScript>();
         }
        
     }
