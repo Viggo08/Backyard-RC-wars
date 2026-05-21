@@ -66,5 +66,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28aec80f39e644440afad4131a5cad07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Explosion
-  explosionDamage: 1
+  explosionDamage: 5
   destroyThisObejct: 1

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - ExplosionCollider
+  - Bullet
   layers:
   - Default
   - TransparentFX
