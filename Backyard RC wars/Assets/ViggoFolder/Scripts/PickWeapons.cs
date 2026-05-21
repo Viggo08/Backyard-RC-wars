@@ -1,12 +1,15 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PickWeapons : MonoBehaviour
 {
     public GameState currentState;
+    public PlayerInput playerInput;
 
   
     public enum GameState
     {
+        PlayersExists,
         Pick1,
         Pick2,
         Pick3,
@@ -23,6 +26,10 @@ public class PickWeapons : MonoBehaviour
     {
         switch (currentState)
         {
+            case GameState.PlayersExists:
+                //If two players exists switch to Pick1
+                break;
+
             case GameState.Pick1:
                 //Player 1 is active and the picked weapon turns active for RC 1
                 break;
@@ -46,6 +53,19 @@ public class PickWeapons : MonoBehaviour
 
     }
 
+    void SwitchToMenuControls()
+    {
+        playerInput.SwitchCurrentActionMap("UI");
+    }
 
+    void SwitchToPlayingControls()
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+    }
+
+    void CheckIfPlayerExists()
+    {
+        
+    }
 
 }
