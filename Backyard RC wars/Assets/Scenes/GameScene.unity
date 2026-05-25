@@ -3362,10 +3362,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 1164728052465160992, guid: 84802a585f2fac74ca817fea917d8829, type: 3}
-      propertyPath: background
-      value: 
-      objectReference: {fileID: 8300000, guid: 2da747e5612bb494b86250a56b6b43bc, type: 3}
     - target: {fileID: 4971103626099579754, guid: 84802a585f2fac74ca817fea917d8829, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3406,10 +3402,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7011394477758043560, guid: 84802a585f2fac74ca817fea917d8829, type: 3}
-      propertyPath: m_Resource
-      value: 
-      objectReference: {fileID: 8300000, guid: 2da747e5612bb494b86250a56b6b43bc, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
