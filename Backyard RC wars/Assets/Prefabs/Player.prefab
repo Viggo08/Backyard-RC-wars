@@ -283,7 +283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Drill
   damageTimer: 0.2
-  drillDamage: 3
+  drillDamage: 4
 --- !u!65 &7987821911840654080
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StapleGunScript
   Bullet: {fileID: 7475565843730465713, guid: 6cba1a182d1b891449ac55c29d8a0192, type: 3}
-  HitsNeeded: 3
+  HitsNeeded: 5
   Hits: 0
   shootDelayTime: 0.3
   shootDelay: 0
