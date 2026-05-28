@@ -11,6 +11,7 @@ public class AudioManager : MonoBehaviour
     public AudioClip background;
     public AudioClip ambiance;
     public AudioClip NailGun;
+    public AudioClip Drill;
 
     private void Start()
     {

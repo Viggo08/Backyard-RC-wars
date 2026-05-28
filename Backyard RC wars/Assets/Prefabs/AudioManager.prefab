@@ -47,7 +47,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -180,8 +180,9 @@ MonoBehaviour:
   Ambiance: {fileID: 282186087802147678}
   SFXSource: {fileID: 6272512788995287074}
   background: {fileID: 8300000, guid: 2da747e5612bb494b86250a56b6b43bc, type: 3}
-  ambiance: {fileID: 0}
-  NailGun: {fileID: 0}
+  ambiance: {fileID: 8300000, guid: af1ceb1cd739e504a8a69d181ebda889, type: 3}
+  NailGun: {fileID: 8300000, guid: f1505614f489dac4a8931b85ee7f5785, type: 3}
+  Drill: {fileID: 8300000, guid: 6e01d8aef5a93d44bbbf880a6f2aab9d, type: 3}
 --- !u!1 &4539240209654711739
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -354,11 +355,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_Resource: {fileID: 0}
+  m_Resource: {fileID: 8300000, guid: af1ceb1cd739e504a8a69d181ebda889, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.7
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
