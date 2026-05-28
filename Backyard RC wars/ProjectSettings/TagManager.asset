@@ -6,11 +6,7 @@ TagManager:
   tags:
   - ExplosionCollider
   - Bullet
-  - Drill
-  - StapleGun
-  - WaterBallon
-  - PotatoCannon
-  - PotatoGun
+  - Audio
   layers:
   - Default
   - TransparentFX

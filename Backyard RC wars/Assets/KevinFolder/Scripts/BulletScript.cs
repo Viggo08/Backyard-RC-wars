@@ -3,6 +3,7 @@ using System.Collections;
 
 public class BulletScript : MonoBehaviour
 {
+    [SerializeField] int damage;
     [SerializeField] float bulletSpeed = 10f;
     public Rigidbody bulletRB;
     public bool Stun = false;
@@ -23,12 +24,15 @@ public class BulletScript : MonoBehaviour
         bulletRB.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision collision)
     {
         StartCoroutine(FreezeCollider());
-        if (other.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
-            targetRB = other.GetComponent<Rigidbody>();
+            Health healthScript = collision.collider.GetComponent<Health>();
+            healthScript.TakeDamage(damage);
+            Destroy(this.gameObject);
+            targetRB = collision.gameObject.GetComponent<Rigidbody>();
 
             if (SGS != null) SGS.Hits += 1;
 

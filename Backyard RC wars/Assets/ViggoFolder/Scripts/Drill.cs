@@ -2,27 +2,44 @@ using UnityEngine;
 
 public class Drill : MonoBehaviour
 {
-    [SerializeField] float DamageTimer = 1f;
-    [SerializeField] int DrillDamage;
+    [SerializeField] private float damageTimer = 1f;
+    [SerializeField] private int drillDamage = 10;
 
-    [SerializeField] Health health;
+    private float timer;
 
-    private void Awake()
+    private AudioManager audioManager;
+
+    void Awake()
     {
-        health = FindAnyObjectByType<Health>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public void DoDamage()
+    void OnCollisionStay(Collision collision)
     {
-        health.TakeDamage(DrillDamage);
-        Debug.Log("Do damage");
+        if (collision.collider.CompareTag("Player"))
+        {
+            timer += Time.deltaTime;
+
+            if (timer >= damageTimer)
+            {
+                Health health = collision.collider.GetComponent<Health>();
+
+                if (health != null)
+                {
+                    health.TakeDamage(drillDamage);
+                    audioManager.playSFX(audioManager.Drill);
+                }
+
+                timer = 0f;
+            }
+        }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
-        //How often damage is dealt:
-        InvokeRepeating(nameof(DoDamage), 0f, DamageTimer);
-        Debug.Log(health.currentHealth);
+        if (collision.collider.CompareTag("Player"))
+        {
+            timer = 0f;
+        }
     }
-
 }

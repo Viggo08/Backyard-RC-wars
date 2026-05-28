@@ -10,6 +10,8 @@ public class AudioManager : MonoBehaviour
     [Header("Audio Clip")]
     public AudioClip background;
     public AudioClip ambiance;
+    public AudioClip NailGun;
+    public AudioClip Drill;
 
     private void Start()
     {

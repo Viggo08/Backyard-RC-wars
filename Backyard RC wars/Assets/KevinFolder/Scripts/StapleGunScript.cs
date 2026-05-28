@@ -9,6 +9,7 @@ public class StapleGunScript : MonoBehaviour
     public int HitsNeeded = 3;
     public int Hits;
 
+    AudioManager audioManager;
     BulletScript  bulletScript;
     PlayerInput playerInput;
 
@@ -21,6 +22,7 @@ public class StapleGunScript : MonoBehaviour
     private void Awake()
     {
         playerInput = GetComponentInParent<PlayerInput>();
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
     private void Start()
@@ -36,6 +38,7 @@ public class StapleGunScript : MonoBehaviour
         if (playerInput.actions["Attack2"].IsPressed() && shootDelay == false)
         {
             Shoot();
+            audioManager.playSFX(audioManager.NailGun);
             StartCoroutine(ShootCoroutine());
         }
     }
