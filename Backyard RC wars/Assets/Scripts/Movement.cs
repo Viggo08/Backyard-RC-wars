@@ -49,6 +49,6 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(moveAmt);
+        //Debug.Log(moveAmt);
     }
 }

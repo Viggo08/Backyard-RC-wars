@@ -1,8 +1,10 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
 
 public class PickWeapons : MonoBehaviour
 {
@@ -22,8 +24,8 @@ public class PickWeapons : MonoBehaviour
     public Button stapleButton;
     public Button waterButton;
 
-    [Header("First Selected Button")]
-    public Button firstSelectedButton;
+    [Header("UI")]
+    public GameObject pickWeaponMenu;
 
     private GameObject player1;
     private GameObject player2;
@@ -31,8 +33,8 @@ public class PickWeapons : MonoBehaviour
     private PlayerInput player2Input;
     private PlayerWeapons player1Weapons;
     private PlayerWeapons player2Weapons;
-    private int playerCount = 0;
 
+    private int playerCount = 0;
 
 
     private List<WeaponType> player1Choices = new List<WeaponType>();
@@ -41,8 +43,6 @@ public class PickWeapons : MonoBehaviour
     private int currentPickingPlayer = 1;
     private int totalPicks = 0;
 
-
-
     private void Start()
     {
         currentState = GameState.WaitingForPlayers;
@@ -50,10 +50,12 @@ public class PickWeapons : MonoBehaviour
         Debug.Log("Waiting For Players...");
     }
 
-
     public void OnPlayerJoined(PlayerInput playerInput)
     {
         playerCount++;
+
+        Debug.Log("PLAYER JOINED");
+        Debug.Log("PLAYER COUNT: " + playerCount);
 
 
 
@@ -62,12 +64,10 @@ public class PickWeapons : MonoBehaviour
             player1 = playerInput.gameObject;
 
             player1Input = player1.GetComponent<PlayerInput>();
-
             player1Weapons = player1.GetComponent<PlayerWeapons>();
 
             Debug.Log("Player 1 Joined");
         }
-
 
 
         if (playerCount == 2)
@@ -75,7 +75,6 @@ public class PickWeapons : MonoBehaviour
             player2 = playerInput.gameObject;
 
             player2Input = player2.GetComponent<PlayerInput>();
-
             player2Weapons = player2.GetComponent<PlayerWeapons>();
 
             Debug.Log("Player 2 Joined");
@@ -89,31 +88,37 @@ public class PickWeapons : MonoBehaviour
     {
         currentState = GameState.PickingWeapons;
 
-    
+        currentPickingPlayer = 1;
+
         player1Input.SwitchCurrentActionMap("UI");
         player2Input.SwitchCurrentActionMap("UI");
 
+        StartCoroutine(ReselectButtonNextFrame());
 
-        player1Input.ActivateInput();
-        player2Input.DeactivateInput();
-
-        currentPickingPlayer = 1;
-
-
-        EventSystem.current.SetSelectedGameObject(firstSelectedButton.gameObject);
+        Debug.Log("Player 1 Pick a Weapon");
     }
 
+    private IEnumerator ReselectButtonNextFrame()
+    {
+        yield return null;
 
+        EventSystem.current.SetSelectedGameObject(null);
+
+        yield return null;
+
+        SelectFirstAvailableButton();
+    }
 
     public void PickWeapon(int weaponIndex)
     {
+        if (currentState != GameState.PickingWeapons)
+            return;
         WeaponType selectedWeapon = (WeaponType)weaponIndex;
-
 
         if (player1Choices.Contains(selectedWeapon) ||
            player2Choices.Contains(selectedWeapon))
         {
-       
+            Debug.Log("Weapon already taken!");
             return;
         }
 
@@ -122,47 +127,49 @@ public class PickWeapons : MonoBehaviour
         {
             player1Choices.Add(selectedWeapon);
 
+            Debug.Log("Player 1 picked " + selectedWeapon);
 
             currentPickingPlayer = 2;
 
-            player1Input.DeactivateInput();
-            player2Input.ActivateInput();
-
-
+            Debug.Log("Player 2 Pick a Weapon");
         }
+
 
 
         else
         {
             player2Choices.Add(selectedWeapon);
 
+            Debug.Log("Player 2 picked " + selectedWeapon);
 
             currentPickingPlayer = 1;
 
-            player2Input.DeactivateInput();
-            player1Input.ActivateInput();
-
+            Debug.Log("Player 1 Pick a Weapon");
         }
 
-        totalPicks++;
-
-
+    
         DisableSelectedWeaponButton(selectedWeapon);
 
-
-        EventSystem.current.SetSelectedGameObject(firstSelectedButton.gameObject);
-
-  
+        totalPicks++;
 
         if (totalPicks >= 4)
         {
             StartGame();
+            return;
         }
+
+        StartCoroutine(ReselectButtonNextFrame());
     }
+
+
 
     private void StartGame()
     {
+        pickWeaponMenu.SetActive(false);
         currentState = GameState.Playing;
+
+        Debug.Log("GAME STARTED");
+
 
 
         foreach (WeaponType weapon in player1Choices)
@@ -176,13 +183,8 @@ public class PickWeapons : MonoBehaviour
             player2Weapons.EnableWeapon(weapon);
         }
 
-
-        player1Input.ActivateInput();
-        player2Input.ActivateInput();
         player1Input.SwitchCurrentActionMap("Player");
         player2Input.SwitchCurrentActionMap("Player");
-
-        Debug.Log("GAME STARTED");
     }
 
 
@@ -205,6 +207,30 @@ public class PickWeapons : MonoBehaviour
             case WeaponType.WaterMortar:
                 waterButton.interactable = false;
                 break;
+        }
+    }
+
+
+    private void SelectFirstAvailableButton()
+    {
+        Button[] buttons =
+        {
+        potatoButton,
+        drillButton,
+        stapleButton,
+        waterButton
+    };
+
+        foreach (Button button in buttons)
+        {
+            if (button.interactable)
+            {
+                button.Select();
+
+                Debug.Log("SELECTED: " + button.name);
+
+                break;
+            }
         }
     }
 }
