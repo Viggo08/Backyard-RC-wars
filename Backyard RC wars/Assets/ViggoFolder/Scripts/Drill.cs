@@ -2,49 +2,44 @@ using UnityEngine;
 
 public class Drill : MonoBehaviour
 {
-    [SerializeField] float DamageTimer = 1f;
-    [SerializeField] int DrillDamage;
+    [SerializeField] private float damageTimer = 1f;
+    [SerializeField] private int drillDamage = 10;
 
-    //[SerializeField] Health health;
-    private Health playerHealth;
+    private float timer;
 
-    AudioManager audioManager;
+    private AudioManager audioManager;
 
-    private void Awake()
+    void Awake()
     {
-        //health = FindAnyObjectByType<Health>();
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
     }
 
-    public void OnCollisionEnter(Collision collision)
+    void OnCollisionStay(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            playerHealth = collision.collider.GetComponent<Health>();
+            timer += Time.deltaTime;
 
-            InvokeRepeating(nameof(DoDamage), 0f, DamageTimer);
+            if (timer >= damageTimer)
+            {
+                Health health = collision.collider.GetComponent<Health>();
 
-            Debug.Log("Started damaging player");
+                if (health != null)
+                {
+                    health.TakeDamage(drillDamage);
+                    audioManager.playSFX(audioManager.Drill);
+                }
+
+                timer = 0f;
+            }
         }
     }
 
-    public void OnCollisionExit(Collision collision)
+    void OnCollisionExit(Collision collision)
     {
         if (collision.collider.CompareTag("Player"))
         {
-            CancelInvoke(nameof(DoDamage));
-        }
-    }
-
-    public void DoDamage()
-    {
-        if (playerHealth != null)
-        {
-            playerHealth.TakeDamage(DrillDamage);
-
-            audioManager.playSFX(audioManager.Drill);
-
-            Debug.Log("Do damage");
+            timer = 0f;
         }
     }
 }

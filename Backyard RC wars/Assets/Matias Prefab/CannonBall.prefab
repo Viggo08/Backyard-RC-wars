@@ -153,6 +153,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4981b88267f018479d0cdf02ac43d36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PotatoBullet
-  damage: 20
+  damage: 10
   explodeTimer: 1.25
   explosionCollider: {fileID: 893567773749892755, guid: e37bfd21b5cd7694fa5d39a6e65cb555, type: 3}
