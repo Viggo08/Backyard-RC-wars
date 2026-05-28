@@ -141,6 +141,7 @@ MonoBehaviour:
   drillButton: {fileID: 1435455689}
   stapleButton: {fileID: 998136120}
   waterButton: {fileID: 435884430}
+  pickWeaponMenu: {fileID: 2101349574}
 --- !u!1 &104356913
 GameObject:
   m_ObjectHideFlags: 0

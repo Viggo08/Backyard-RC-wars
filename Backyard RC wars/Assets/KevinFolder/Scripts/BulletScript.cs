@@ -16,6 +16,12 @@ public class BulletScript : MonoBehaviour
     {
         ColliderDelay = false;
     }
+
+    private void Update()
+    {
+      
+    }
+
     private void Start()
     {
         SGS = FindFirstObjectByType<StapleGunScript>();
