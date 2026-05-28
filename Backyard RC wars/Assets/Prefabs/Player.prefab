@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 501910842137677874}
   - component: {fileID: 3550188440749598397}
   - component: {fileID: 9219157378297102342}
+  - component: {fileID: 3345275203948133440}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -147,6 +148,22 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3345275203948133440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123871570803957853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce46b008de8730d48a2565b560eddc22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerWeapons
+  potatoCannon: {fileID: 6139917342199116158}
+  drill: {fileID: 154922631113110252}
+  stapleGun: {fileID: 7062833031016565065}
+  waterMortar: {fileID: 9163800806287994169}
 --- !u!1 &154922631113110252
 GameObject:
   m_ObjectHideFlags: 0
@@ -162,11 +179,11 @@ GameObject:
   - component: {fileID: 7987821911840654080}
   m_Layer: 0
   m_Name: Drill
-  m_TagString: Untagged
+  m_TagString: Drill
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5797051270812918721
 Transform:
   m_ObjectHideFlags: 0
@@ -321,11 +338,11 @@ GameObject:
   - component: {fileID: 1468307959845395285}
   m_Layer: 0
   m_Name: PotatoGun
-  m_TagString: Untagged
+  m_TagString: PotatoGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7100085788862040504
 Transform:
   m_ObjectHideFlags: 0
@@ -485,11 +502,11 @@ GameObject:
   - component: {fileID: 3373176683338981523}
   m_Layer: 0
   m_Name: StapleGun
-  m_TagString: Untagged
+  m_TagString: StapleGun
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2074421175436018571
 Transform:
   m_ObjectHideFlags: 0
@@ -616,11 +633,11 @@ GameObject:
   - component: {fileID: 2657220690775117079}
   m_Layer: 0
   m_Name: WaterBallon
-  m_TagString: Untagged
+  m_TagString: WaterBallon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4974747549060543798
 Transform:
   m_ObjectHideFlags: 0
